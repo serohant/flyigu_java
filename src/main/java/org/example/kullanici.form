@@ -8,15 +8,6 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="943e6" class="javax.swing.JLabel" binding="label">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font size="16"/>
-          <text value="Hoşgeldin, isim"/>
-        </properties>
-      </component>
       <component id="c3831" class="javax.swing.JButton" binding="biletAlButton" default-binding="true">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -25,7 +16,7 @@
           <text value="Bilet Al"/>
         </properties>
       </component>
-      <component id="7bd05" class="javax.swing.JButton" binding="aktifBiletlerimiGörüntüleButton" default-binding="true">
+      <component id="7bd05" class="javax.swing.JButton" binding="biletlerimButton">
         <constraints>
           <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -33,12 +24,12 @@
           <text value="Aktif Biletlerimi Görüntüle"/>
         </properties>
       </component>
-      <component id="5e001" class="javax.swing.JButton" binding="BilgiGuncelle">
+      <component id="5e001" class="javax.swing.JButton" binding="profilButton">
         <constraints>
           <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Bilgilerimi Güncelle"/>
+          <text value="Profil"/>
         </properties>
       </component>
       <component id="142e6" class="javax.swing.JLabel">
@@ -90,12 +81,20 @@
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="bd0bd" class="javax.swing.JButton" binding="oturumuKapatButton" default-binding="true">
+      <component id="bd0bd" class="javax.swing.JButton" binding="çıkışYapButton">
         <constraints>
           <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Oturumu Kapat"/>
+        </properties>
+      </component>
+      <component id="c3b55" class="javax.swing.JLabel" binding="label1">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Hoşgeldin, isim"/>
         </properties>
       </component>
     </children>

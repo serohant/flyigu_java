@@ -46,9 +46,8 @@ public class updateInfo {
                 String oldPassword = passwordField1.getText();
                 String newPassword = passwordField2.getText();
                 String newPassword2 = passwordField3.getText();
-                String newEmail = textField4.getText();
 
-                if (oldPassword.isEmpty() && newPassword.isEmpty() && newEmail.isEmpty() && newPassword2.isEmpty()) {
+                if (oldPassword.isEmpty() && newPassword.isEmpty() && newPassword2.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Lütfen güncellemek istediğiniz alanları doldurun.", "Uyarı", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -77,15 +76,6 @@ public class updateInfo {
                     }
 
                     // E-posta güncelleme
-                    if (!newEmail.isEmpty()) {
-                        String updateEmailQuery = "UPDATE users SET mail = ? WHERE id = ?";
-                        try (PreparedStatement emailStatement = connection.prepareStatement(updateEmailQuery)) {
-                            emailStatement.setString(1, newEmail);
-                            emailStatement.setString(2, userdatta.get("id"));
-                            emailStatement.executeUpdate();
-                            isUpdated = true;
-                        }
-                    }
 
                     if (isUpdated) {
                         JOptionPane.showMessageDialog(frame, "Bilgiler başarıyla güncellendi.", "Başarılı", JOptionPane.INFORMATION_MESSAGE);

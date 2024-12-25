@@ -11,7 +11,7 @@ import com.google.gson.JsonParser;
 public class flightApi {
 
     public static JsonArray oneway(String departure_airport_code, String arrival_airport_code, String departure_date, int number_of_adults, int number_of_children, int number_of_infants, String cabin_class) {
-        String apiKey = "676b366f3e91f044ed719209";
+        String apiKey = "676c65a4e5d91744d910251e";
 
         String url = "https://api.flightapi.io/onewaytrip/" + apiKey + "/" + departure_airport_code + "/" + arrival_airport_code + "/" + departure_date + "/" + number_of_adults + "/" + number_of_children + "/" + number_of_infants + "/" + cabin_class + "/TRY";
 
@@ -43,7 +43,7 @@ public class flightApi {
     }
 
     public static JsonObject twoway(String departure_airport_code, String arrival_airport_code, String departure_date, String arrival_date, int number_of_adults, int number_of_children, int number_of_infants, String cabin_class) {
-        String apiKey = "676b366f3e91f044ed719209";
+        String apiKey = "676c65a4e5d91744d910251e";
         String url = "https://api.flightapi.io/roundtrip/" + apiKey + "/" + departure_airport_code + "/" + arrival_airport_code + "/" + departure_date + "/" + arrival_date + "/" + number_of_adults + "/" + number_of_children + "/" + number_of_infants + "/" + cabin_class + "/TRY";
 
         try {
