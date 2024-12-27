@@ -80,7 +80,6 @@ public class updateInfo {
                     if (isUpdated) {
                         JOptionPane.showMessageDialog(frame, "Bilgiler başarıyla güncellendi.", "Başarılı", JOptionPane.INFORMATION_MESSAGE);
                         frame.dispose();
-                        kullanici kullanici = new kullanici();
                     } else {
                         JOptionPane.showMessageDialog(frame, "Hiçbir bilgi güncellenmedi.", "Bilgi", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -97,7 +96,6 @@ public class updateInfo {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Mevcut pencereyi kapat
-                kullanici k = new kullanici();
             }
         });
     }

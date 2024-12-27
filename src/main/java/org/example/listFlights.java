@@ -128,20 +128,24 @@ public class listFlights {
             });
 
             int maxFlights = Math.min(sortedFlights.size(), 10);
-            for (int i = 0; i < maxFlights; i++) {
-                JsonObject flight = sortedFlights.get(i);
+            if(sortedFlights.size() != 0){
+                for (int i = 0; i < maxFlights; i++) {
+                    JsonObject flight = sortedFlights.get(i);
 
-                String flightId = flight.get("id").getAsString();
-                JsonObject priceObject = flight.getAsJsonArray("pricing_options").get(0).getAsJsonObject();
-                double price = priceObject.getAsJsonObject("price").get("amount").getAsDouble();
+                    String flightId = flight.get("id").getAsString();
+                    JsonObject priceObject = flight.getAsJsonArray("pricing_options").get(0).getAsJsonObject();
+                    double price = priceObject.getAsJsonObject("price").get("amount").getAsDouble();
 
-                String departureAirport = data.get("departure_airport").toString();
-                String arrivalAirport = data.get("arrival_airport").toString();
-                String departureTime = parseCustomTimestamp(flightId.split("-")[1]);
-                String arrivalTime = parseCustomTimestamp(flightId.split("-")[6]);
-                String aktarma = Integer.parseInt(flightId.split("-")[3]) > 0 ? "Aktarmalı" : "Aktarmasız";
+                    String departureAirport = data.get("departure_airport").toString();
+                    String arrivalAirport = data.get("arrival_airport").toString();
+                    String departureTime = parseCustomTimestamp(flightId.split("-")[1]);
+                    String arrivalTime = parseCustomTimestamp(flightId.split("-")[6]);
+                    String aktarma = Integer.parseInt(flightId.split("-")[3]) > 0 ? "Aktarmalı" : "Aktarmasız";
 
-                model.addRow(new Object[]{flightId, departureAirport, arrivalAirport, departureTime, arrivalTime, aktarma, price});
+                    model.addRow(new Object[]{flightId, departureAirport, arrivalAirport, departureTime, arrivalTime, aktarma, price});
+                }
+            }else{
+                JOptionPane.showMessageDialog(frame, "İstenilen tipte bir uçuş bulunamadı");
             }
         } catch (Exception ex) {
             System.err.println("JSON verisi işlenirken hata oluştu: " + ex.getMessage());
@@ -190,37 +194,41 @@ public class listFlights {
             });
 
             int maxResults = Math.min(sortedItineraries.size(), 10);
-            for (int i = 0; i < maxResults; i++) {
-                JsonObject itinerary = sortedItineraries.get(i);
+            if(sortedItineraries.size() != 0){
+                for (int i = 0; i < maxResults; i++) {
+                    JsonObject itinerary = sortedItineraries.get(i);
 
-                JsonArray legIds = itinerary.getAsJsonArray("leg_ids");
-                if (legIds.size() < 2) continue;
+                    JsonArray legIds = itinerary.getAsJsonArray("leg_ids");
+                    if (legIds.size() < 2) continue;
 
-                JsonObject outboundLeg = findLegById(legs, legIds.get(0).getAsString());
-                JsonObject inboundLeg = findLegById(legs, legIds.get(1).getAsString());
+                    JsonObject outboundLeg = findLegById(legs, legIds.get(0).getAsString());
+                    JsonObject inboundLeg = findLegById(legs, legIds.get(1).getAsString());
 
-                if (outboundLeg == null || inboundLeg == null) continue;
+                    if (outboundLeg == null || inboundLeg == null) continue;
 
-                String departureTimeOutbound = outboundLeg.get("departure").getAsString();
-                String arrivalTimeOutbound = outboundLeg.get("arrival").getAsString();
-                int durationOutbound = outboundLeg.get("duration").getAsInt();
+                    String departureTimeOutbound = outboundLeg.get("departure").getAsString();
+                    String arrivalTimeOutbound = outboundLeg.get("arrival").getAsString();
+                    int durationOutbound = outboundLeg.get("duration").getAsInt();
 
-                String departureTimeInbound = inboundLeg.get("departure").getAsString();
-                String arrivalTimeInbound = inboundLeg.get("arrival").getAsString();
-                int durationInbound = inboundLeg.get("duration").getAsInt();
+                    String departureTimeInbound = inboundLeg.get("departure").getAsString();
+                    String arrivalTimeInbound = inboundLeg.get("arrival").getAsString();
+                    int durationInbound = inboundLeg.get("duration").getAsInt();
 
-                JsonArray pricingOptions = itinerary.getAsJsonArray("pricing_options");
-                double price = pricingOptions.size() > 0 ? pricingOptions.get(0).getAsJsonObject().getAsJsonObject("price").get("amount").getAsDouble() : 0.0;
+                    JsonArray pricingOptions = itinerary.getAsJsonArray("pricing_options");
+                    double price = pricingOptions.size() > 0 ? pricingOptions.get(0).getAsJsonObject().getAsJsonObject("price").get("amount").getAsDouble() : 0.0;
 
-                model.addRow(new Object[]{
-                        formatDateTime(departureTimeOutbound),
-                        formatDateTime(arrivalTimeOutbound),
-                        formatDateTime(departureTimeInbound),
-                        formatDateTime(arrivalTimeInbound),
-                        formatDuration(durationOutbound),
-                        formatDuration(durationInbound),
-                        price
-                });
+                    model.addRow(new Object[]{
+                            formatDateTime(departureTimeOutbound),
+                            formatDateTime(arrivalTimeOutbound),
+                            formatDateTime(departureTimeInbound),
+                            formatDateTime(arrivalTimeInbound),
+                            formatDuration(durationOutbound),
+                            formatDuration(durationInbound),
+                            price
+                    });
+                }
+            }else{
+                JOptionPane.showMessageDialog(frame, "İstenilen tipte bir uçuş bulunamadı");
             }
         } catch (Exception ex) {
             System.err.println("JSON işlenirken hata: " + ex.getMessage());
